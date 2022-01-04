@@ -249,7 +249,8 @@ body {
     cursor: pointer;
 }
 
-#backFromGamesButton {
+#backFromGamesButton,
+#backFromOtherStuffButton {
     position: absolute;
     top: 1rem;
     left: 1rem;
