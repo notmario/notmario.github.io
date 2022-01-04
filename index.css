@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    background-color: black;
+}
+
+.bg-img {
+    /* The image used */
+    background-image: url("bliss.jpg");
+
+    opacity: 30%;
+  
+    /* Full height */
+    height: 100vh;
+    width: 100vw;
+  
+    /* Center and scale the image nicely */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+}
+
+.centerflex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* The animation code */
+@keyframes slide-in {
+    from {transform: translateY(calc(50vw + 100%));}
+    to {transform: translateY(0%);}
+}
+
+@keyframes dissolve {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.overlay {
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid white;
+    border-radius: 1rem;
+    animation: slide-in 1s ease-out;
+}
+
+@media (prefers-reduced-motion) {
+    .animation {
+      animation-name: dissolve;
+    }
+  }
