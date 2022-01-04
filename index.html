@@ -15,19 +15,71 @@
 </head>
 <body>
     <div class="bg-img"></div>
-    <div class="centerflex">
-        <div class="overlay">
-            <h1>Hello!</h1>
-            <p>
-                This is a simple web page, while i make stuff. uhh yeah. I don't know what to put here.
+    <div id="intro" class="overlaybox">
+        <h1>Hello!</h1>
+        <p>
+            This is a simple web page, while i make stuff. uhh yeah. I don't know what to put here.
 
-                <br>
+            <br>
 
-                <br>
+            <br>
 
-                Expect more stuff soon.
-            </p>
+            Links to stuff:
+
+            <br>
+
+            <a href="#" id="gamesButton">Games</a>
+        </p>
+    </div>
+    <div id="games" class="overlaybox hidden">
+        <a href="#" id="backFromGamesButton">Back</a>
+        <h1>Games</h1>
+        <p>Some really dumb games I made while I was bored</p>
+        <div class="gamesGrid">
+            <div class="game">
+                <a href="https://www.notmar.io/amongdash/">
+                    <img src="amongdash.png" alt="Tetris">
+                    <h2>among dash</h2>
+                    <p>A thrilling endless runner where you control an among us.</p>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://www.notmar.io/breakformer/">
+                    <img src="breakformer.png" alt="Tetris">
+                    <h2>breakformer</h2>
+                    <p>A classic game, but with a new twist.</p>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://www.notmar.io/platformer/">
+                    <img src="platformer.png" alt="Tetris">
+                    <h2>platformer</h2>
+                    <p>A simple game about jumping around.</p>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://www.notmar.io/DonutClicker/">
+                    <img src="donutclicker.png" alt="Tetris">
+                    <h2>donut clicker</h2>
+                    <p>A game about making as many donuts as possible.</p>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://www.notmar.io/kindachess/">
+                    <img src="kindachess.png" alt="Tetris">
+                    <h2>kindachess</h2>
+                    <p>A version of Chess with infinite possibilities.</p>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://among-clicker.web.app/">
+                    <img src="amongclicker.png" alt="Tetris">
+                    <h2>among clicker</h2>
+                    <p>A clicker game based on Among Us.</p>
+                </a>
+            </div>
         </div>
     </div>
 </body>
+<script src="index.js" defer></script>
 </html>

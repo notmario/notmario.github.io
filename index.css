@@ -4,17 +4,28 @@
     border: 0;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow-x: hidden;
     color: white;
     font-family: 'Open Sans', sans-serif;
 }
 
 body, html {
-    height: 100%;
     background-color: black;
+    min-height: 100vh;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
 .bg-img {
+    position: fixed;
+    top: 0;
+    left: 0;
     /* The image used */
     background-image: url("bliss.jpg");
 
@@ -28,39 +39,241 @@ body, html {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    position: absolute;
 }
 
-.centerflex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-/* The animation code */
-@keyframes slide-in {
-    from {transform: translateY(calc(50vw + 100%));}
-    to {transform: translateY(0%);}
-}
-
-@keyframes dissolve {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-.overlay {
+.overlaybox {
     padding: 1rem;
     background-color: rgba(0, 0, 0, 0.5);
     border: 1px solid white;
     border-radius: 1rem;
-    animation: slide-in 1s ease-out;
+    text-align: center;
+    max-width: 80vw;
 }
 
-@media (prefers-reduced-motion) {
-    .animation {
-      animation-name: dissolve;
+.overlaybox:not(#intro) {
+    margin: 10vh auto;
+}
+
+#intro {
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+}
+
+.hidden:not(.spinOut):not(.spinIn):not(.spinOutNormal):not(.spinInNormal) {
+    display: none;
+    opacity: 0;
+    z-index: -999;
+}
+
+.overlaybox:not(.hidden) {
+    z-index:100;
+}
+
+/* below is animation jank ! woo ! */
+@keyframes spinOut {
+    0% {
+        transform: translate(-50%, -50%) rotateY(0deg);
+        display: block !important;
+        opacity: 1;
     }
-  }
+    49.99% {
+        transform: translate(-50%, -50%) rotateY(90deg);
+        display: block !important;
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-50%, -50%) rotateY(90deg);
+        display: none !important;
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) rotateY(0deg);
+        display: none !important;
+        opacity: 0;
+    }
+}
+
+
+@keyframes spinOutNormal {
+    0% {
+        transform: rotateY(0deg);
+        display: block !important;
+        opacity: 1;
+        max-height: 99999999999999999vh;
+    }
+    49.99% {
+        transform: rotateY(90deg);
+        display: block !important;
+        opacity: 1;
+        max-height: 99999999999999999vh;
+    }
+    50% {
+        transform: rotateY(90deg);
+        display: none !important;
+        opacity: 0;
+        max-height: 50vh;
+    }
+    100% {
+        transform: rotateY(0deg);
+        display: none !important;
+        opacity: 0;
+        max-height: 50vh;
+    }
+}
+
+.spinOutNormal {
+    animation: spinOutNormal 1.5s ease-in forwards !important;
+}
+
+.spinOut {
+    animation: spinOut 1.5s ease-in forwards !important;
+}
+
+
+@keyframes spinIn {
+    0% {
+        transform: translate(-50%, -50%) rotateY(180deg);
+        display: none !important;
+        opacity: 0;
+    }
+    49.99% {
+        transform: translate(-50%, -50%) rotateY(90deg);
+        display: none !important;
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-50%, -50%) rotateY(90deg);
+        display: block !important;
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) rotateY(0deg);
+        display: block !important;
+        opacity: 1;
+    }
+}
+
+.spinIn {
+    animation: spinIn 1.5s ease-out forwards !important;
+}
+
+@keyframes spinInNormal {
+    0% {
+        transform: rotateY(180deg);
+        display: none !important;
+        max-height: 50vh;
+        opacity: 0;
+    }
+    49.99% {
+        transform: rotateY(90deg);
+        display: none !important;
+        max-height: 50vh;
+        opacity: 0;
+    }
+    50% {
+        transform: rotateY(90deg);
+        display: block !important;
+        max-height: 99999999999999999vh;
+        opacity: 1;
+    }
+    100% {
+        transform: rotateY(0deg);
+        display: block !important;
+        max-height: 99999999999999999vh;
+        opacity: 1;
+    }
+}
+
+.spinInNormal {
+    animation: spinInNormal 1.5s ease-out forwards !important;
+}
+
+/* animation jank over */
+
+.gamesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem,1fr));
+    gap: 1rem;
+    margin: 1rem;
+    width: 78vw;
+    overflow: visible;
+}
+
+.game {
+    border: 1px solid white;
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: calc(100% - 2rem);
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+}
+
+.game a {
+    text-decoration: none;
+    overflow: hidden;
+}
+.game img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.game p {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+#intro p a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#backFromGamesButton {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+/* width */
+::-webkit-scrollbar {
+    position: absolute;
+    width: 10px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
