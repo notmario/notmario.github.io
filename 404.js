@@ -7,22 +7,22 @@ function getRandomItem(list) {
 
 const fourohfourimages = [
     {
-        src: './cooldog.jpg',
+        src: 'https://notmar.io/cooldog.jpg',
         alt: 'A cool dog',
         name: 'a cool dog',
     },
     {
-        src: './thumbsup.jpg',
+        src: 'https://notmar.io/thumbsup.jpg',
         alt: 'A thumbs up',
         name: 'a smiley face',
     },
     {
-        src: './among3d.png',
+        src: 'https://notmar.io/among3d.png',
         alt: 'Someone very sus',
         name: 'someone that is very sus',
     },
     {
-        src: './banana.png',
+        src: 'https://notmar.io/banana.png',
         alt: 'Some bananas',
         name: 'some bananas',
     }
