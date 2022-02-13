@@ -204,9 +204,9 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(15rem,1fr));
     gap: 1rem;
-    margin: 1rem;
     width: 78vw;
     overflow: visible;
+    margin: 1rem auto;
 }
 
 .game {
