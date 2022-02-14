@@ -221,16 +221,17 @@ body {
     color: white;
     font-size: 1.5rem;
     font-weight: bold;
-    cursor: pointer;
     width: calc(100% - 2rem);
     position: relative;
     overflow: hidden;
     aspect-ratio: 1 / 1;
+    user-select: none;
 }
 
 .game a {
     text-decoration: none;
     overflow: hidden;
+    cursor: pointer;
 }
 .game img {
     width: 100%;
