@@ -12,31 +12,42 @@
     <meta content="#9B1DF5" data-react-helmet="true" name="theme-color" />
     <link rel="shortcut icon" href="favicon.png" type="image/png">
     <link rel="stylesheet" href="index.css">
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/xp.css"
+    >
 </head>
 <body>
     <div class="bg-img"></div>
-    <div id="intro" class="overlaybox">
-        <h1>Hello!</h1>
-        <p>
-            This is a simple web page, where i make stuff. uhh yeah. I don't know what to put here.
-
-            <br>
-
-            <br>
-
-            Links to stuff:
-
-            <br>
-
-            <a href="#" id="gamesButton">Games</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#" id="otherStuffButton">Other Stuff</a>
-        </p>
+    <div class="window" style="width: calc(100vw - 105px - 3rem); position: absolute; top: 1rem; left: 1rem; height: 6rem;">
+        <div class="title-bar">
+          <div class="title-bar-text">Hello!</div>
+          <div class="title-bar-controls">
+          </div>
+        </div>
+        <div class="window-body" style="font-size: 200%;">
+          <p>Uhh, hello i guess.</p>
+        </div>
     </div>
-    <div id="games" class="overlaybox hidden">
-        <a href="#" id="backFromGamesButton">Back</a>
-        <h1>Games</h1>
-        <p>Some really dumb games I made while I was bored</p>
-        <div class="gamesGrid">
+    <div class="window" style="width: 105px; position: absolute; top: 1rem; right: 1rem; height: 6rem;">
+        <div class="title-bar">
+          <div class="title-bar-text">Dark mode</div>
+          <div class="title-bar-controls">
+          </div>
+        </div>
+        <div class="window-body">
+            <button id="darkButton">Dark mode!</button>
+        </div>
+    </div>
+    <div class="window" style="width: calc(100vw - 2rem); max-width: calc(100vw - 2rem); height: calc(100vh - 135px - 1rem); position: absolute; bottom: 1rem; left: 1rem;">
+        <div class="title-bar">
+          <div class="title-bar-text">All the things</div>
+          <div class="title-bar-controls">
+          </div>
+        </div>
+        <div class="window-body" style="font-size: 200%; overflow-y: scroll; margin: 0; margin-right: 0.2rem; height: calc(100vh - 135px - 2.8rem)">
+          <p>&nbsp;&nbsp;&nbsp;Literally everything I've published to this website. The best stuff's on top.</p>
+          <div class="games">
             <div class="game">
                 <a href="https://www.notmar.io/amongdash/">
                     <img src="amongdash.png" alt="among dash">
@@ -59,6 +70,27 @@
                 </a>
             </div>
             <div class="game">
+                <a href="https://donut-simulator-remastered.web.app/">
+                    <img src="donutclickerdeluxe.png" alt="Donut Clicker">
+                    <h2>donut clicker deluxe</h2>
+                    <p style="margin-top: -2rem;">A game about manipulating the stock market, being corrupt, and building factories. Oh yeah, you make donuts too.<br>Collab with StilltheSmartie</p>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://www.notmar.io/StartPage/">
+                    <img src="startpage.png" alt="start page">
+                    <h2>start page</h2>
+                    <p>A feature-rich start page.</p>
+                </a>
+            </div>
+            <div class="game">
+                <a href="https://www.notmar.io/DonutClicker/">
+                    <img src="donutclicker.png" alt="Donut Clicker">
+                    <h2>donut clicker</h2>
+                    <p>A game about making as many donuts as possible.</p>
+                </a>
+            </div>
+            <div class="game">
                 <a href="https://www.notmar.io/breakformer/">
                     <img src="breakformer.png" alt="breakformer">
                     <h2>breakformer</h2>
@@ -77,13 +109,6 @@
                     <img src="dambuildersimulator.png" alt="Dam Builder Simulator">
                     <h2>Dam Builder Simulator</h2>
                     <p>Build dams. Profit.</p>
-                </a>
-            </div>
-            <div class="game">
-                <a href="https://www.notmar.io/DonutClicker/">
-                    <img src="donutclicker.png" alt="Donut Clicker">
-                    <h2>donut clicker</h2>
-                    <p>A game about making as many donuts as possible.</p>
                 </a>
             </div>
             <div class="game">
@@ -114,20 +139,6 @@
                     <p>A clicker game based on Among Us. (external website)</p>
                 </a>
             </div>
-        </div>
-    </div>
-    <div id="otherStuff" class="overlaybox hidden">
-        <a href="#" id="backFromOtherStuffButton">Back</a>
-        <h1>Other things</h1>
-        <p>Other tools and interesting things</p>
-        <div class="gamesGrid">
-            <div class="game">
-                <a href="https://www.notmar.io/StartPage/">
-                    <img src="startpage.png" alt="start page">
-                    <h2>start page</h2>
-                    <p>A feature-rich start page.</p>
-                </a>
-            </div>
             <div class="game">
                 <a href="https://www.notmar.io/twonote/">
                     <img src="twonote.png" alt="twonote">
@@ -150,6 +161,7 @@
                     <p>A todo application</p>
                 </a>
             </div>
+          </div>
         </div>
     </div>
 </body>
