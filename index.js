@@ -38,23 +38,23 @@
 //     document.getElementById("intro").classList.add("spinIn");
 // });
 
-let darkMode = localStorage.getItem("darkMode");
-if (darkMode === null) {
-    darkMode = false;
-}
+// let darkMode = localStorage.getItem("darkMode");
+// if (darkMode === null) {
+//     darkMode = false;
+// }
 
-// add class to body
-if (darkMode) {
-    document.body.classList.add("dark");
-}
+// // add class to body
+// if (darkMode) {
+//     document.body.classList.add("dark");
+// }
 
-document.getElementById("darkButton").addEventListener("click", () => {
-    if (darkMode) {
-        document.body.classList.remove("dark");
-        darkMode = false;
-    } else {
-        document.body.classList.add("dark");
-        darkMode = true;
-    }
-    localStorage.setItem("darkMode", darkMode);
-});
+// document.getElementById("darkButton").addEventListener("click", () => {
+//     if (darkMode) {
+//         document.body.classList.remove("dark");
+//         darkMode = false;
+//     } else {
+//         document.body.classList.add("dark");
+//         darkMode = true;
+//     }
+//     localStorage.setItem("darkMode", darkMode);
+// });
