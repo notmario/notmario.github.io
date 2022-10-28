@@ -153,5 +153,5 @@ function animate() {
   camera.rotation.y = tween(startTime, 0, -Math.PI/8 + rotY, 1000);
   renderer.render( scene, camera );
 
-  actualMain.style.opacity = tween(startTime + 550, 0, 1, 500);
+  actualMain.style.setProperty("--animtime",tween(startTime + 550, 0, 1, 500));
 }

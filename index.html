@@ -7,32 +7,37 @@
     <title>notmario.net</title>
     <meta name="description" content="Hello! This is a website by not mario.">
     <meta content="notmario.net" property="og:title" />
-    <meta content="A website by not mario, with funny things." property="og:description" />
+    <meta content="A website by me." property="og:description" />
     <meta content="https://notmario.net" property="og:url" />
     <meta content="#9B1DF5" data-react-helmet="true" name="theme-color" />
     <link rel="shortcut icon" href="favicon.png" type="image/png">
     <link rel="stylesheet" href="index.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/xp.css"
+    >
     <style>
       body { margin: 0; }
     </style>
 </head>
 <body>
     <main>
-        <div class="toptext">
-          <h1>notmario.net</h1>
+      <div class="window">
+        <div class="title-bar">
+          <div class="title-bar-text">notmario.net</div>
+          <div class="title-bar-controls">
+            <button aria-label="Help" onclick="alert('?')"></button>
+          </div>
+        </div>
+        <div class="window-body">
+          <p>Hey!</p>
           <p>I made a bunch of things because I was bored. They're all here.</p>
-          <p>NEW: Filters. Filter things. Yes. Yay.</p>
-          <label for="good">Good: </label><input type="checkbox" name="good" id="good">
-          <label for="funny">"Good": </label><input type="checkbox" name="funny" id="funny">
-          <label for="short">Made quickly: </label><input type="checkbox" name="short" id="short">
-          <label for="game">Game: </label><input type="checkbox" name="game" id="game">
-          <label for="app">Application: </label><input type="checkbox" name="app" id="app">
-          <label for="nonexternal">On notmario.net: </label><input type="checkbox" name="nonexternal" id="nonexternal">
-          <label for="external">External: </label><input type="checkbox" name="external" id="external">
+          <p>Most of them suck.</p>
         </div>
         <div class="games">
             
         </div>
+      </div>
     </main>
 </body>
 <script src="js/three.js"></script>

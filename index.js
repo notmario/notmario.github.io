@@ -175,41 +175,79 @@
 </div> */}
 
 
-let things = [
+let mainthings = [
   {
     "name": "among dash",
     "url": "https://www.notmario.net/amongdash/",
-    "img": "amongdash.png",
-    "desc": "A thrilling endless runner where you control an among us. <br> <br>Deluxe update out now!",
+    "img": "new/amongdash.png",
+    "desc": "A thrilling endless runner where you control an among us.",
     tags: ["good","funny","game","nonexternal"]
   },
   {
     "name": "Crame",
     "url": "https://www.notmario.net/crame/",
-    "img": "crame.png",
-    "desc": "An engaging game where you kill the waves of <s>among us</s> dragons.",
+    "img": "new/crame.png",
+    "desc": "An engaging game where you kill the waves of dragons.",
     tags: ["good","game","nonexternal"]
   },
   {
     "name": "Wardle",
     "url": "https://www.notmario.net/wardle/",
-    "img": "wardle.png",
+    "img": "new/wardle.png",
     "desc": "A totally original word game yes.",
     tags: ["good","game","nonexternal"]
   },
   {
     "name": "Donut Clicker Deluxe",
     "url": "https://donut-clicker-deluxe.web.app/",
-    "img": "donutclickerdeluxe.png",
-    "desc": "A game about making donuts, probably.<br>Collab with StilltheSmartie",
+    "img": "new/donutclickerdeluxe.png",
+    "desc": "A game about making donuts, probably.\nCollab with StilltheSmartie",
     tags: ["good","game","external"]
-  },
+  }, 
   {
     "name": "Start Page",
     "url": "https://www.notmario.net/StartPage/",
-    "img": "startpage.png",
+    "img": "new/startpage.png",
     "desc": "A feature-rich start page.",
     tags: ["good","app","nonexternal"]
+  },
+  {
+    "name": "Dam Builder Simulator",
+    "url": "https://www.notmario.net/dambuildersimulator/",
+    "img": "dambuildersimulator.png",
+    "desc": "Build dams. Profit.",
+    tags: ["funny","short","game","nonexternal"],
+  },
+  {
+    "name": "kindachess",
+    "url": "https://www.notmario.net/kindachess/",
+    "img": "kindachess.png",
+    "desc": "A version of Chess with infinite possibilities.",
+    tags: ["good","game","nonexternal"],
+  },
+  {
+    "name": "Other stuff",
+    "url": "folder(otherthings)",
+    "img": "new/folder.png",
+    "desc": "Some other things.<br/>Most are not as good.",
+    tags: [],
+  },
+  {
+    "name": "Misc.",
+    "url": "folder(misc)",
+    "img": "new/folder.png",
+    "desc": "???",
+    tags: [],
+  },
+]
+
+let otherthings = [
+  {
+    "name": "Back",
+    "url": "folder(mainthings)",
+    "img": "new/folder.png",
+    "desc": "Go back",
+    tags: [],
   },
   {
     "name": "Donut Clicker",
@@ -233,13 +271,6 @@ let things = [
     tags: ["game","nonexternal"],
   },
   {
-    "name": "Dam Builder Simulator",
-    "url": "https://www.notmario.net/dambuildersimulator/",
-    "img": "dambuildersimulator.png",
-    "desc": "Build dams. Profit.",
-    tags: ["funny","short","game","nonexternal"],
-  },
-  {
     "name": "Falling",
     "url": "https://www.notmario.net/falling/",
     "img": "falling.png",
@@ -252,13 +283,6 @@ let things = [
     "img": "walling.png",
     "desc": "Do you wall?",
     tags: ["short","game","nonexternal"],
-  },
-  {
-    "name": "kindachess",
-    "url": "https://www.notmario.net/kindachess/",
-    "img": "kindachess.png",
-    "desc": "A version of Chess with infinite possibilities.",
-    tags: ["good","game","nonexternal"],
   },
   {
     "name": "among clicker",
@@ -290,6 +314,46 @@ let things = [
   }
 ]
 
+let misc = [
+  {
+    "name": "Back",
+    "url": "folder(mainthings)",
+    "img": "new/folder.png",
+    "desc": "Go back",
+    tags: [],
+  },
+  {
+    "name": "The Button",
+    "url": "thebutton",
+    "img": "new/calc.png",
+    "desc": "You've pressed this <b>"+(localStorage.getItem("homepagebuttonpresses")||0)+"</b> time"+(localStorage.getItem("homepagebuttonpresses") === "1" ? "" : "s")+".",
+    tags: [],
+  }
+]
+if (localStorage.getItem("homepagebuttonpresses") >= 1) {
+  misc.push({
+    "name": "The Balance",
+    "url": "",
+    "img": "new/calc.png",
+    "desc": "You have <b>$"+(localStorage.getItem("homepagedollars")||0)+"</b> dollar"+(localStorage.getItem("homepagedollars") === "1" ? "" : "s")+".<br/>You get <b>$"+(localStorage.getItem("homepagedollarsperclick")||1)+"</b> dollar"+(localStorage.getItem("homepagedollarsperclick") === "1" ? "" : "s")+" per click.",
+    tags: [],
+  })
+  misc.push({
+    "name": "The Upgrader",
+    "url": "theupgrader",
+    "img": "new/calc.png",
+    "desc": "Costs <b>$50</b> dollars.<br/><b>+1</b> dollar per click.",
+    tags: [],
+  })
+  misc.push({
+    "name": "The Reward",
+    "url": "thereward",
+    "img": "new/calc.png",
+    "desc": "Costs <b>$1000000000000000000</b>.<br/>You get the reward.",
+    tags: [],
+  })
+}
+
 let tagsRequired = {
   good: false,
   funny: false,
@@ -305,7 +369,66 @@ let clickTagButton = (tag) => {
   updateThings()
 }
 
-let updateThings = () => {
+let click = (a)=>{
+  if (a === "") {} else
+  if (a.indexOf("folder(") !== -1) {
+    let folder = a.substring(7, a.length-1)
+    if (folder == "mainthings") {
+      updateThings(mainthings)
+    } else if (folder == "otherthings") {
+      updateThings(otherthings)
+    } else if (folder == "misc") {
+      updateThings(misc)
+    }
+  } else if (a === "thebutton") {
+    localStorage.setItem("homepagebuttonpresses", (parseInt(localStorage.getItem("homepagebuttonpresses"))||0)+1);
+    localStorage.setItem("homepagedollars", (parseInt(localStorage.getItem("homepagedollars"))||0)+parseInt(localStorage.getItem("homepagedollarsperclick"))||1);
+    if (localStorage.getItem("homepagebuttonpresses") === "1") {
+      localStorage.setItem("homepagedollarsperclick", 1);
+      misc.push({
+        "name": "The Balance",
+        "url": "",
+        "img": "new/calc.png",
+        "desc": "You have <b>$"+(localStorage.getItem("homepagedollars")||0)+"</b> dollar"+(localStorage.getItem("homepagedollars") === "1" ? "" : "s")+".<br/>You get <b>$"+(localStorage.getItem("homepagedollarsperclick")||1)+"</b> dollar"+(localStorage.getItem("homepagedollarsperclick") === "1" ? "" : "s")+" per click.",
+        tags: [],
+      })
+      misc.push({
+        "name": "The Upgrader",
+        "url": "theupgrader",
+        "img": "new/calc.png",
+        "desc": "Cost <b>$50</b> dollars. <b>+1</b> dollar per click.",
+        tags: [],
+      })
+      misc.push({
+        "name": "The Reward",
+        "url": "thereward",
+        "img": "new/calc.png",
+        "desc": "Costs <b>$1000000000000000000</b>.<br/>You get the reward.",
+        tags: [],
+      })
+    }
+    misc[1].desc = "You've pressed this <b>"+(localStorage.getItem("homepagebuttonpresses")||0)+"</b> time"+(localStorage.getItem("homepagebuttonpresses") === "1" ? "" : "s")+"."
+    misc[2].desc = "You have <b>$"+(localStorage.getItem("homepagedollars")||0)+"</b> dollar"+(localStorage.getItem("homepagedollars") === "1" ? "" : "s")+".<br/>You get <b>$"+(localStorage.getItem("homepagedollarsperclick")||1)+"</b> dollar"+(localStorage.getItem("homepagedollarsperclick") === "1" ? "" : "s")+" per click.";
+    updateThings(misc)
+  } else if (a === "theupgrader") {
+    if (localStorage.getItem("homepagedollars") >= 50) {
+      localStorage.setItem("homepagedollars", (parseInt(localStorage.getItem("homepagedollars"))||0)-50);
+      localStorage.setItem("homepagedollarsperclick", (parseInt(localStorage.getItem("homepagedollarsperclick"))||1)+1);
+      misc[1].desc = "You've pressed this <b>"+(localStorage.getItem("homepagebuttonpresses")||0)+"</b> time"+(localStorage.getItem("homepagebuttonpresses") === "1" ? "" : "s")+"."
+      misc[2].desc = "You have <b>$"+(localStorage.getItem("homepagedollars")||0)+"</b> dollar"+(localStorage.getItem("homepagedollars") === "1" ? "" : "s")+".<br/>You get <b>$"+(localStorage.getItem("homepagedollarsperclick")||1)+"</b> dollar"+(localStorage.getItem("homepagedollarsperclick") === "1" ? "" : "s")+" per click.";
+      updateThings(misc)
+    }
+  } else if (a === "thereward") {
+    if (localStorage.getItem("homepagedollars") >= 1000000000000000000n)
+      window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ") // heheheha
+    else
+      alert("You are too poor.")
+  } else {
+    window.open(a)
+  }
+}
+
+let updateThings = (things) => {
   // first clear "games" div
   document.querySelector(".games").innerHTML = ""
   // then add all the games that match the tags
@@ -322,21 +445,27 @@ let updateThings = () => {
     if (add) {
       document.querySelector(".games").innerHTML += `
         <div class="game">
-          <a href="${thing.url}">
+          <a>
             <img src="${thing.img}">
             <h2>${thing.name}</h2> 
-            <p>${thing.desc}</p>
+            <h3>${thing.desc}</h3> 
           </a>
         </div>
       `
     }
   }
+  // add event listeners
+  document.querySelectorAll(".game").forEach((element, index) => {
+    element.addEventListener("click", () => {
+      click(things[index].url)
+    })
+  })
 }
 
-updateThings();
+updateThings(mainthings);
 
-Object.keys(tagsRequired).forEach(element => {
-  document.getElementById(element).addEventListener("change", () => {
-    clickTagButton(element)
-  } ) 
-})
+// Object.keys(tagsRequired).forEach(element => {
+//   document.getElementById(element).addEventListener("change", () => {
+//     clickTagButton(element)
+//   } ) 
+// })
