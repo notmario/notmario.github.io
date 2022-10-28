@@ -1,292 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
-/* 
-
-* {
-    border: 0;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    color: white;
-    font-family: 'Open Sans', sans-serif;
-}
-
-body, html {
-    background-color: black;
-    min-height: 100vh;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.overlaybox {
-    padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: 1px solid white;
-    border-radius: 1rem;
-    text-align: center;
-    max-width: 80vw;
-}
-
-.overlaybox:not(#intro) {
-    margin: 10vh auto;
-}
-
-#intro {
-    position: absolute;
-    top: 50vh;
-    left: 50vw;
-    transform: translate(-50%, -50%);
-}
-
-.hidden:not(.spinOut):not(.spinIn):not(.spinOutNormal):not(.spinInNormal) {
-    display: none;
-    opacity: 0;
-    z-index: -999;
-}
-
-.overlaybox:not(.hidden) {
-    z-index:100;
-}
-
- below is animation jank ! woo ! 
-@keyframes spinOut {
-    0% {
-        transform: translate(-50%, -50%) rotateY(0deg);
-        display: block !important;
-        opacity: 1;
-    }
-    49.99% {
-        transform: translate(-50%, -50%) rotateY(90deg);
-        display: block !important;
-        opacity: 1;
-    }
-    50% {
-        transform: translate(-50%, -50%) rotateY(90deg);
-        display: none !important;
-        opacity: 0;
-    }
-    100% {
-        transform: translate(-50%, -50%) rotateY(0deg);
-        display: none !important;
-        opacity: 0;
-    }
-}
-
-
-@keyframes spinOutNormal {
-    0% {
-        transform: rotateY(0deg);
-        display: block !important;
-        opacity: 1;
-        margin: 10vh auto;
-        max-height: 99999999999999999vh;
-    }
-    49.99% {
-        transform: rotateY(90deg);
-        display: block !important;
-        opacity: 1;
-        margin: 10vh auto;
-        max-height: 99999999999999999vh;
-    }
-    50% {
-        transform: rotateY(90deg);
-        display: none !important;
-        opacity: 0;
-        max-height: 0vh;
-        margin: 0;
-    }
-    100% {
-        transform: rotateY(0deg);
-        display: none !important;
-        opacity: 0;
-        max-height: 0vh;
-        margin: 0;
-    }
-}
-
-.spinOutNormal {
-    animation: spinOutNormal 1.5s ease-in forwards !important;
-}
-
-.spinOut {
-    animation: spinOut 1.5s ease-in forwards !important;
-}
-
-
-@keyframes spinIn {
-    0% {
-        transform: translate(-50%, -50%) rotateY(180deg);
-        display: none !important;
-        opacity: 0;
-    }
-    49.99% {
-        transform: translate(-50%, -50%) rotateY(90deg);
-        display: none !important;
-        opacity: 0;
-    }
-    50% {
-        transform: translate(-50%, -50%) rotateY(90deg);
-        display: block !important;
-        opacity: 1;
-    }
-    100% {
-        transform: translate(-50%, -50%) rotateY(0deg);
-        display: block !important;
-        opacity: 1;
-    }
-}
-
-.spinIn {
-    animation: spinIn 1.5s ease-out forwards !important;
-}
-
-@keyframes spinInNormal {
-    0% {
-        transform: rotateY(180deg);
-        display: none !important;
-        max-height: 0vh;
-        margin: 0;
-        opacity: 0;
-    }
-    49.99% {
-        transform: rotateY(90deg);
-        display: none !important;
-        max-height: 0vh;
-        margin: 0;
-        opacity: 0;
-    }
-    50% {
-        transform: rotateY(90deg);
-        display: block !important;
-        max-height: 99999999999999999vh;
-        margin: 10vh auto;
-        opacity: 1;
-    }
-    100% {
-        transform: rotateY(0deg);
-        display: block !important;
-        max-height: 99999999999999999vh;
-        margin: 10vh auto;
-        opacity: 1;
-    }
-}
-
-.spinInNormal {
-    animation: spinInNormal 1.5s ease-out forwards !important;
-}
-
- animation jank over 
-
-.gamesGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem,1fr));
-    gap: 1rem;
-    width: 78vw;
-    overflow: visible;
-    margin: 1rem auto;
-}
-
-.game {
-    border: 1px solid white;
-    border-radius: 1rem;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    width: calc(100% - 2rem);
-    position: relative;
-    overflow: hidden;
-    aspect-ratio: 1 / 1;
-    user-select: none;
-}
-
-.game a {
-    text-decoration: none;
-    overflow: hidden;
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.game img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    opacity: 0.5;
-}
-
-.game p {
-    font-size: 1rem;
-    font-weight: bold;
-    margin-top: 1rem;
-}
-
-#intro p a:not(.normallink) {
-    color: white;
-    text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-#intro p a.normallink {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-
-#backFromGamesButton,
-#backFromOtherStuffButton {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    text-decoration: none;
-    font-size: 2rem;
-}
-
- width 
-::-webkit-scrollbar {
-    position: absolute;
-    width: 10px;
-}
-  
- Track 
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-  
- Handle 
-::-webkit-scrollbar-thumb {
-    background-color: #888;
-}
-  
- Handle on hover 
-::-webkit-scrollbar-thumb:hover {
-    background-color: #555;
-}
-
-#fourohfourimage {
-    width: 20rem;
-    height: 20rem;
-} */
-
 body {
     background-color: black;
   
@@ -298,7 +11,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    background-image: url("./bliss.jpg");
+    background-color: #237f80;
 
     /* opacity: 30%; */
   
@@ -329,32 +42,27 @@ body.dark .window {
 }
 div.games {
     display: grid;
-    grid-template-columns: repeat(3, minmax(12rem,1fr));
+    grid-template-columns: repeat(auto-fill, 16rem);
+    grid-template-rows: repeat(auto-fit, 6rem);
     gap: 1rem;
-    width: calc(65% - 2rem);
-    padding: 1rem;
+    width: calc(100% - 2.4rem);
+    padding: 1rem 1rem 1rem 1rem;
     overflow: visible;
-    margin: 0 0 0 auto;
+    position: relative;
+    margin-left: 0.2rem;
+    border-top: 1px solid #c6cdec;
+    background-color: white;
+    justify-content: space-evenly;
 }
 
 .game {
-    border: 1px solid white;
-    border-radius: 1rem;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     color: white;
     font-size: 1.5rem;
     font-weight: bold;
-    width: calc(100% - 2rem);
+    width: calc(100%);
     position: relative;
-    overflow: hidden;
-    aspect-ratio: 1 / 1;
     user-select: none;
-    background-color: #000000;
 }
 
 .game a {
@@ -365,32 +73,35 @@ div.games {
     height: 100%;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     z-index: 3;
 }
 .game img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
+    width: 5rem;
     z-index: 0;
-    opacity: 0.5;
+    opacity: 1;
+    aspect-ratio: 1/1;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    border-radius: 8px;
+    float: left;
+    margin-right: 1rem;
 }
 
-.game p {
-    font-size: 1rem;
-    font-weight: bold;
-    z-index: 3;
-    color: white;
-}
 .game h2 {
-    color: white;
+    color: black;
     z-index: 3;
+    top: 1rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.game h3 {
+    color: black;
+    z-index: 3;
+    top: 1rem;
+    font-size: 0.7rem;
+    margin-top: 0.5rem;
 }
 
 * {
@@ -403,19 +114,25 @@ div.games {
 *::-webkit-scrollbar {
     display: none;
 }
+p {
+    font-size: 1rem;
+    text-align: left;
+    padding-left: 0.5rem;
+}
 
 main {
     position: absolute;
-    background-color: rgba(0,0,0,0.3);
     background-blend-mode: darken;
     padding: 0;
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 4rem);
     overflow-y: scroll;
     text-align: center;
     margin: 0;
     padding-top: 2rem;
-    opacity: 0;
+    padding-bottom: 2rem;
+    opacity: 1;
+    transform: translate(calc(calc(1 - var(--animtime)) * -50rem), calc(calc(1 - var(--animtime)) * 25rem)) scale(calc(var(--animtime) * 1));
 }
 canvas {
     position: fixed;
@@ -426,49 +143,16 @@ div.toptext {
     margin: 0 0 0 auto;
 }
 
-@media screen and (min-width: 1600px) {
-    div.games {
-        grid-template-columns: repeat(4, minmax(12rem,1fr));
-    }
+div.window {
+    width: calc(65% - 2rem);
+    margin: 0 1rem 0 auto;
 }
-
-@media screen and (max-width: 1200px) {
-    div.games {
-        width: calc(100% - 2rem);
-        grid-template-columns: repeat(4, minmax(12rem,1fr));
-    }
-    div.toptext {
-        width: calc(100% - 2rem);
-        margin: 0 0 0 auto;
-    }
-}
-@media screen and (max-width: 1010px) {
-    div.games {
-        width: calc(100% - 2rem);
-        grid-template-columns: repeat(3, minmax(12rem,1fr));
-    }
-    div.toptext {
-        width: calc(100% - 2rem);
-        margin: 0 0 0 auto;
-    }
+div.window *:not(.title-bar-text) {
+    color: black !important;
 }
 @media screen and (max-width: 790px) {
-    div.games {
+    div.window {
         width: calc(100% - 2rem);
         grid-template-columns: repeat(2, minmax(12rem,1fr));
-    }
-    div.toptext {
-        width: calc(100% - 2rem);
-        margin: 0 0 0 auto;
-    }
-}
-@media screen and (max-width: 520px) {
-    div.games {
-        width: calc(100% - 2rem);
-        grid-template-columns: repeat(1, minmax(12rem,1fr));
-    }
-    div.toptext {
-        width: calc(100% - 2rem);
-        margin: 0 0 0 auto;
     }
 }
