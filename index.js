@@ -292,6 +292,13 @@ let otherthings = [
     tags: ["funny","game","external"],
   },
   {
+    "name": "TVLSOCTT",
+    "url": "https://www.notmario.net/tvlsoctt/",
+    "img": "christmas.png",
+    "desc": "The Very Lazy Set of Christmas Themed Things.",
+    tags: ["nonexternal"],
+  },
+  {
     "name": "twonote",
     "url": "https://www.notmario.net/twonote/",
     "img": "twonote.png",
