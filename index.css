@@ -1,5 +1,199 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+}
+
+body {
+    background-color: #2d2d2d;
+    z-index: -50;
+    
+    overflow: hidden;
+    position: relative;
+}
+
+div.intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+
+    overflow: hidden;
+    top: 0;
+    left: 0;
+
+    background: #0d0d0d;
+    z-index: -999;
+}
+
+@keyframes introbg {
+    0% {
+        top: calc(-400rem + -100vh);
+    }
+    100% {
+        top: 0;
+    }
+}
+
+div.bgtransition {
+    transform: rotate(-45deg);
+    background-color: #2d2d2d;
+    width: 1000rem;
+    height: 300rem;
+    position: absolute;
+    z-index: 0;
+
+    top: -500rem;
+
+    animation-name: introbg;
+    animation-duration: 1s;
+    animation-delay: 4s;
+    animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+    animation-fill-mode: both;
+}
+
+@keyframes introimg {
+    0% {
+        transform: translateX(calc(-50vw + -18rem)) rotate(-720deg);
+    }
+    45%, 55% {
+        transform: none;
+    }
+    100% {
+        transform: translateX(calc(50vw + 18rem)) rotate(720deg);
+    }
+}
+
+img#introimg {
+    width: 18rem;
+    height: 18rem;
+    animation-name: introimg;
+    animation-duration: 4s;
+    animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+    transform: translateX(calc(50vw + 18rem));
+
+    z-index: 1;
+}
+
+
+@keyframes main {
+    0% {
+        transform: translateX(100vw);
+    }
+    100% {
+        transform: none;
+    }
+}
+
+div.main {
+    height: 100vh;
+    width: calc(100vw - 4rem);
+
+    overflow: scroll;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: 3;
+    
+    background-color: transparent;
+
+    text-align: center;
+
+    padding: 2rem;
+
+    transform: none;
+
+    animation-name: main;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+    animation-delay: 4.5s;
+    animation-fill-mode: both;
+
+    opacity: 1;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+div.games {
+    padding-top: 4rem;
+    width: 58rem;
+    display: grid;
+    grid-template-columns: repeat(5, 10rem);
+    grid-template-rows: repeat(8, 10rem);
+    gap: 2rem;
+    margin: 0 auto;
+}
+
+div.game {
+    display: inline-block;
+    width: 10rem;
+    height: 10rem;
+    margin: 1rem;
+    border-radius: 8px;
+    background-color: #2d2d2d;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+div.game.wide2 {
+    width: 22rem;
+}
+div.game.wide3 {
+    width: 34rem;
+}
+div.game.tall2 {
+    height: 22rem;
+}
+div.game.tall3 {
+    height: 34rem;
+}
+
+div.game img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    /* don't block pointer */
+    pointer-events: none;
+}
+
+div.game a {
+    background-color: #0000007f;
+    width: calc(100% - 2rem);
+    height: calc(100% - 2rem);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 1;
+    padding: 1rem;
+}
+
+div.game:hover a {
+    opacity: 1;
+}
+
+/*
+
 body {
     background-color: black;
   
@@ -12,8 +206,6 @@ body {
     top: 0;
     left: 0;
     background-color: #237f80;
-
-    /* opacity: 30%; */
   
     height: 100vh;
     width: 100vw;
@@ -108,8 +300,8 @@ div.games {
     color: white;
     font-family: 'Open Sans', sans-serif;
     margin: 0;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
 }
 *::-webkit-scrollbar {
     display: none;
@@ -155,4 +347,5 @@ div.window *:not(.title-bar-text) {
         width: calc(100% - 2rem);
         grid-template-columns: repeat(2, minmax(12rem,1fr));
     }
-}
+} 
+*/
