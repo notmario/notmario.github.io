@@ -12,35 +12,144 @@
     <meta content="#9B1DF5" data-react-helmet="true" name="theme-color" />
     <link rel="shortcut icon" href="favicon.png" type="image/png">
     <link rel="stylesheet" href="index.css">
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/xp.css"
-    >
     <style>
       body { margin: 0; }
     </style>
 </head>
 <body>
-    <main>
-      <div class="window">
-        <div class="title-bar">
-          <div class="title-bar-text">notmario.net</div>
-          <div class="title-bar-controls">
-            <button aria-label="Help" onclick="alert('?')"></button>
-          </div>
-        </div>
-        <div class="window-body">
-          <p>Hey!</p>
-          <p>I made a bunch of things because I was bored. They're all here.</p>
-          <p>Most of them suck.</p>
-        </div>
-        <div class="games">
-            
-        </div>
+  <div class="intro">
+    <img src="./favicon.png" alt="nm" id="introimg">
+    <div class="bgtransition"></div>
+  </div>
+  
+  <div class="main">
+    <h1>notmario.net</h1>
+    <p>hey! here's a bunch of things i made because i was bored</p>
+    <div class="games">
+      <div class="game wide2 tall2" style="grid-column: 1 / span 2; grid-row: 1 / span 2;">
+        <img src="./amongdash.png" alt="among dash">
+        <a href="https://www.notmario.net/amongdash/">
+          <h2>among dash</h2>
+          <p>A thrilling endless runner where you control an among us.</p>
+        </a>
       </div>
-    </main>
+      <div class="game wide3" style="grid-column: 3 / span 3; grid-row: 1;">
+        <img src="./cropped/crame.png" alt="crame">
+        <a href="https://www.notmario.net/crame/">
+          <h2>Crame</h2>
+          <p>An engaging game where you kill the waves of dragons.</p>
+        </a>
+      </div>
+      <div class="game wide2 tall2" style="grid-column: 3 / span 2; grid-row: 2 / span 2;">
+        <img src="./wardle.png" alt="wardle">
+        <a href="https://www.notmario.net/wardle/">
+          <h2>wardle</h2>
+          <p>A totally original word game yes.</p>
+        </a>
+      </div>
+      <div class="game" style="grid-column: 5; grid-row: 2">
+        <img src="./cropped/amongclicker.png" alt="among clicker">
+        <a href="https://among-clicker.web.app/">
+          <h2>among clicker</h2>
+          <p>A clicker game based on Among Us. (external)</p>
+        </a>
+      </div>
+      <div class="game wide2 tall2" style="grid-column: 1 / span 2; grid-row: 3 / span 2">
+        <img src="./donutclickerdeluxe.png" alt="Donut Clicker Deluxe">
+        <a href="https://donut-clicker-deluxe.web.app/">
+          <h2>Donut Clicker Deluxe</h2>
+          <p>A game about making donuts, probably.<br/>Collab with StilltheSmartie</p>
+        </a>
+      </div>
+      <div class="game wide2" style="grid-column: 3 / span 2; grid-row: 4;">
+        <img src="./christmas.png" alt="christmas">
+        <a href="https://www.notmario.net/wardle/">
+          <h2>TVLSOCTT</h2>
+          <p>The Very Lazy Set of Christmas Themed Things.</p>
+        </a>
+      </div>
+      <div class="game tall2" style="grid-column: 5; grid-row: 3 / span 2">
+        <img src="./startpage.png" alt="StartPage">
+        <a href="https://www.notmario.net/StartPage/">
+          <h2>Start Page</h2>
+          <p>A feature-rich start page.</p>
+        </a>
+      </div>
+      <div class="game tall2" style="grid-column: 3; grid-row: 5 / span 2">
+        <img src="./dambuildersimulator.png" alt="dam builder simulator">
+        <a href="https://www.notmario.net/dambuildersimulator/">
+          <h2>Dam Builder Simulator</h2>
+          <p>Build dams. Profit.</p>
+        </a>
+      </div>
+      <div class="game wide2" style="grid-column: 1 / span 2; grid-row: 6">
+        <img src="./cropped/kindachess.png" alt="kindachess">
+        <a href="https://www.notmario.net/kindachess/">
+          <h2>kindachess</h2>
+          <p>A version of Chess with infinite possibilities.</p>
+        </a>
+      </div>
+      <div class="game" style="grid-column: 5; grid-row: 5">
+        <img src="./donutclicker.png" alt="donut clicker">
+        <a href="https://www.notmario.net/DonutClicker/">
+          <h2>Donut Clicker</h2>
+          <p>A game about making as many donuts as possible.</p>
+        </a>
+      </div>
+      <div class="game" style="grid-column: 3; grid-row: 7">
+        <img src="./breakformer.png" alt="breakformer">
+        <a href="https://www.notmario.net/breakformer/">
+          <h2>breakformer</h2>
+          <p>A classic game, but with a new twist.</p>
+        </a>
+      </div>
+      <div class="game wide2" style="grid-column: 1 / span 2; grid-row: 5">
+        <img src="./platformer.png" alt="platformer">
+        <a href="https://www.notmario.net/platformer/">
+          <h2>platformer</h2>
+          <p>A simple game about jumping around.</p>
+        </a>
+      </div>
+      <div class="game" style="grid-column: 1; grid-row: 7">
+        <img src="./falling.png" alt="falling">
+        <a href="https://www.notmario.net/falling/">
+          <h2>falling</h2>
+          <p>Do you fall?</p>
+        </a>
+      </div>
+      <div class="game" style="grid-column: 2; grid-row: 7">
+        <img src="./walling.png" alt="walling">
+        <a href="https://www.notmario.net/walling/">
+          <h2>walling</h2>
+          <p>Do you wall?</p>
+        </a>
+      </div>
+      <div class="game tall2" style="grid-column: 4; grid-row: 5 / span 2">
+        <img src="./twonote.png" alt="twonote">
+        <a href="https://www.notmario.net/twonote/">
+          <h2>twonote</h2>
+          <p>a funny note taking thing</p>
+        </a>
+      </div>
+      <div class="game" style="grid-column: 5; grid-row: 6">
+        <img src="./todo.png" alt="todo">
+        <a href="https://www.notmario.net/todo/">
+          <h2>todo</h2>
+          <p>a todo application</p>
+        </a>
+      </div>
+      <div class="game" style="grid-column: 4; grid-row: 7">
+        <img src="./bloonsrandomiser.png" alt="bloonsrandomiser">
+        <a href="https://www.notmario.net/btd6randomiser/">
+          <h2>BTD6 Randomiser</h2>
+          <p>A challenge randomiser for Bloons Tower Defense 6</p>
+        </a>
+      </div>
+    </div>
+  </div>
+  
 </body>
 <script src="js/three.js"></script>
-<script src="./threestuff.js" defer></script>
+<!--<script src="./threestuff.js" defer></script>-->
 <script src="./index.js" defer></script>
 </html>
