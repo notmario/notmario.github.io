@@ -1,3 +1,10 @@
+document.querySelector(".tandc").addEventListener("click", (e) => {
+    if (!e.shiftKey || !e.ctrlKey) return;
+    document.querySelectorAll(".hidden").forEach((element) => {
+        element.classList.remove("hidden");
+    });
+})
+
 // document.getElementById("gamesButton").addEventListener("click", () => {
 //     // transition intro and games
 //     document.getElementById("intro").classList.remove("spinIn");
