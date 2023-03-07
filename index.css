@@ -193,7 +193,7 @@ div.game:hover a {
 }
 
 .hidden {
-    display: none !important;
+    /* display: none !important; */
 }
 
 p.tandc {
