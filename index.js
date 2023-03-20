@@ -1,9 +1,326 @@
-document.querySelector(".tandc").addEventListener("click", (e) => {
-    if (!e.shiftKey || !e.ctrlKey) return;
-    document.querySelectorAll(".hidden").forEach((element) => {
-        element.classList.remove("hidden");
+// open window function
+let currently_open_windows = []
+
+let open_window = (title, content, icon, id, closable = true)=>{
+    // add window div
+    let window_div = document.createElement("div");
+    window_div.classList.add("window");
+    if (currently_open_windows.includes(id)) {
+        return;
+    }
+    currently_open_windows.push(id);
+    document.querySelector('.windows').appendChild(window_div);
+    // title
+    let title_div = document.createElement("div");
+    title_div.classList.add("title");
+    title_div.innerHTML = title;
+    window_div.appendChild(title_div);
+    // icon
+    let icon_img = document.createElement("img");
+    icon_img.classList.add("icon");
+    icon_img.src = icon;
+    title_div.insertBefore(icon_img, title_div.firstChild);
+    if (closable) {
+
+        let close_button = document.createElement("button");
+        close_button.classList.add("close");
+        close_button.innerHTML = "X";
+        close_button.addEventListener("click", ()=>{
+            window_div.remove();
+            taskbar_button.remove();
+            currently_open_windows = currently_open_windows.filter((item) => item !== id);
+        });
+
+        title_div.appendChild(close_button);
+
+    }
+
+    // content
+    let content_div = document.createElement("div");
+    content_div.classList.add("content");
+    content_div.innerHTML = content;
+    window_div.appendChild(content_div);
+
+    // position
+    window_div.style.transform = "translate(1rem,1rem)";
+
+    // can drag using title bar
+    let drag = false;
+    let drag_start = {x: 0, y: 0};
+    let drag_offset = {x: 0, y: 0};
+    title_div.addEventListener("mousedown", (e) => {
+        drag = true;
+        // get current transform
+        let transform = window_div.style.transform;
+        // get x and y
+        let x = transform.split(",")[0].split("(")[1];
+        let y = transform.split(",")[1].split(")")[0];
+
+        drag_start.x = parseFloat(x);
+        drag_start.y = parseFloat(y);
+        drag_offset.x = window_div.offsetLeft - e.clientX;
+        drag_offset.y = window_div.offsetTop - e.clientY;
+
+        console.log("drag start");
     });
+
+    document.addEventListener("mouseup", (e) => {
+        drag = false;
+
+        console.log("drag end");
+    });
+
+    document.addEventListener("mousemove", (e) => {
+        if (drag) {
+            // keep on screen
+            let x = e.clientX + drag_offset.x + drag_start.x;
+            let y = e.clientY + drag_offset.y + drag_start.y;
+            if (x < 0) {
+                x = 0;
+            }
+            if (y < 0) {
+                y = 0;
+            }
+            if (x + window_div.offsetWidth > window.innerWidth) {
+                x = window.innerWidth - window_div.offsetWidth;
+            }
+            if (y + window_div.offsetHeight > window.innerHeight) {
+                y = window.innerHeight - window_div.offsetHeight;
+            }
+            window_div.style.transform = `translate(${x}px,${y}px)`;
+        }
+    });
+
+    let bring_to_front = () => {
+        // bring to front
+        let windows = document.querySelectorAll(".window");
+        if (window_div.classList.contains("active")) return;
+        for (let i = 0; i < windows.length; i++) {
+            if (windows[i] === window_div) continue;
+            windows[i].style.zIndex = 0;
+            windows[i].classList.remove("active");
+        }
+        window_div.style.zIndex = 1;
+        window_div.classList.add("active");
+    }
+
+    // bring to front on click
+    window_div.addEventListener("mousedown", (e) => {
+        bring_to_front();
+    });
+
+    // bring to front
+    bring_to_front();
+
+    // taskbar button
+    let taskbar_button = document.createElement("div");
+    taskbar_button.classList.add("taskbar-button");
+    // image
+    let taskbar_button_img = document.createElement("img");
+    taskbar_button_img.src = icon;
+    taskbar_button.appendChild(taskbar_button_img);
+
+    // add to taskbar
+    document.querySelector(".taskbar").appendChild(taskbar_button);
+    
+    // bring to front on click
+    taskbar_button.addEventListener("click", (e) => {
+        bring_to_front();
+    });
+
+    return window_div;
+}
+
+open_window("Hello!","<textarea>Hey! Here's a bunch of things I made.\nMost of them are pretty lazy, but oh well.\nHave fun!</textarea>", "thumbsup.jpg", "intro");
+
+// desktop icons
+let add_desktop_icon = (name, icon, onclick) => {
+    let desktop_icon = document.createElement("div");
+    desktop_icon.classList.add("desktop-icon");
+    // image
+    let desktop_icon_img = document.createElement("img");
+    desktop_icon_img.src = icon;
+    desktop_icon.appendChild(desktop_icon_img);
+    // text
+    let desktop_icon_text = document.createElement("div");
+    desktop_icon_text.classList.add("desktop-icon-text");
+    desktop_icon_text.innerText = name;
+    desktop_icon.appendChild(desktop_icon_text);
+    // add to desktop
+    document.querySelector(".desktop").appendChild(desktop_icon);
+
+    // on click
+    desktop_icon.addEventListener("click", (e) => {
+        onclick();
+    });
+}
+
+let add_stuff_to_folder = (div, stuff) => {
+    let icons = document.createElement("div");
+    icons.classList.add("icons");
+    for (let i = 0; i < stuff.length; i++) {
+        let item = stuff[i];
+        let icon = document.createElement("div");
+        icon.classList.add("icon");
+        // image
+        let icon_img = document.createElement("img");
+        icon_img.src = item.icon;
+        icon.appendChild(icon_img);
+        // text
+        let icon_text = document.createElement("div");
+        icon_text.classList.add("icon-text");
+        icon_text.innerText = item.name;
+        icon.appendChild(icon_text);
+        // add to icons
+        icons.appendChild(icon);
+        // on click
+        icon.addEventListener("click", (e) => {
+            item.onclick();
+        });
+    }
+    div.appendChild(icons);
+}
+
+
+add_desktop_icon("Stuff", "folder.png", () => {
+    let wd = open_window("Stuff", "I've made a bunch of stuff (because i was bored). Here are some of them.", "folder.png", "stuff-folder");
+
+    let stuff = [
+        {
+            "name": "among dash",
+            "url": "https://notmario.github.io/amongdash/",
+            "icon": "new/amongdash.png",
+        },
+        {
+            "name": "Crame",
+            "url": "https://notmario.github.io/crame/",
+            "icon": "new/crame.png",
+        },
+        {
+            "name": "Wardle",
+            "url": "https://notmario.github.io/wardle/",
+            "icon": "new/wardle.png",
+        },
+        {
+            "name": "Choos",
+            "url": "https://notmario.github.io/choos/",
+            "icon": "choos.png",
+        },
+        {
+            "name": "Donut Clicker Deluxe",
+            "url": "https://donut-clicker-deluxe.web.app/",
+            "icon": "new/donutclickerdeluxe.png",
+        }, 
+        {
+            "name": "Start Page",
+            "url": "https://notmario.github.io/StartPage/",
+            "icon": "new/startpage.png",
+        },
+        {
+            "name": "Dam Builder Simulator",
+            "url": "https://notmario.github.io/dambuildersimulator/",
+            "icon": "dambuildersimulator.png",
+        },
+        {
+            "name": "Other",
+            "icon": "folder.png",
+            "onclick": () => {
+                // open other folder
+                let wd = open_window("Other Things", "More things. These ones are lower quality / less funny.", "folder.png", "other-things");
+                let stuff = [
+                    {
+                        "name": "kindachess",
+                        "url": "https://notmario.github.io/kindachess/",
+                        "icon": "kindachess.png",
+                    },
+                    {
+                        "name": "Donut Clicker",
+                        "url": "https://notmario.github.io/DonutClicker/",
+                        "icon": "donutclicker.png",
+                    },
+                    {
+                        "name": "breakformer",
+                        "url": "https://notmario.github.io/breakformer/",
+                        "icon": "breakformer.png",
+                    },
+                    {
+                        "name": "platformer",
+                        "url": "https://notmario.github.io/platformer/",
+                        "icon": "platformer.png",
+                    },
+                    {
+                        "name": "Falling",
+                        "url": "https://notmario.github.io/falling/",
+                        "icon": "falling.png",
+                    },
+                        {
+                        "name": "Walling",
+                        "url": "https://notmario.github.io/walling/",
+                        "icon": "walling.png",
+                        },
+                    {
+                        "name": "among clicker",
+                        "url": "https://among-clicker.web.app/",
+                        "icon": "amongclicker.png",
+                    },
+                    {
+                        "name": "TVLSOCTT",
+                        "url": "https://notmario.github.io/tvlsoctt/",
+                        "icon": "christmas.png",
+                    },
+                    {
+                        "name": "twonote",
+                        "url": "https://notmario.github.io/twonote/",
+                        "icon": "twonote.png",
+                    },
+                    {
+                        "name": "todo",
+                        "url": "https://notmario.github.io/todo/",
+                        "icon": "todo.png",
+                    },
+                ]
+                // map stuff with url to onclick
+                stuff = stuff.map((item) => {
+                    if (!item.url) return item;
+                    return {
+                        ...item,
+                        "onclick": () => {
+                            window.open(item.url);
+                        }
+                    }
+                });
+
+                add_stuff_to_folder(wd, stuff);
+
+            }
+
+        }
+    ]
+    // map stuff with url to onclick
+    stuff = stuff.map((item) => {
+        if (!item.url) return item;
+        return {
+            ...item,
+            "onclick": () => {
+                window.open(item.url);
+            }
+        }
+    });
+
+    add_stuff_to_folder(wd, stuff);
+});
+
+add_desktop_icon("README", "notepad.png", () => {
+    open_window("README", "<textarea>among us!!!</textarea>", "notepad.png", "readme", true);
 })
+
+// document.querySelector(".tandc").addEventListener("click", (e) => {
+//     if (!e.shiftKey || !e.ctrlKey) return;
+
+//     document.querySelectorAll(".hidden").forEach((element) => {
+//         element.classList.remove("hidden");
+//     });
+// })
 
 // document.getElementById("gamesButton").addEventListener("click", () => {
 //     // transition intro and games
