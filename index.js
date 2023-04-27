@@ -222,6 +222,11 @@ add_desktop_icon("Stuff", "folder.png", () => {
             "icon": "dambuildersimulator.png",
         },
         {
+            "name": "shard game*",
+            "url": "https://notmario.github.io/shardgame/",
+            "icon": "shardgame.png",
+        },
+        {
             "name": "Other",
             "icon": "folder.png",
             "onclick": () => {
