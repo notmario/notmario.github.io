@@ -1,544 +1,74 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
 
+:root {
+  font-size: 20px;
+}
+
 * {
   margin: 0;
   padding: 0;
   font-family: 'Comic Neue', cursive;
-}
-
-div.desktop {
-  width: calc(100vw - 2rem);
-  height: calc(100vh - 5rem);
-  background-color: #008282;
-  overflow: hidden;
-  position: relative;
-
-  /* grid */
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: repeat(auto-fill, 5rem);
-  grid-template-rows: repeat(auto-fill, 5rem);
-  grid-gap: 1rem;
-  padding: 1rem;
-}
-
-div.taskbar {
-  width: calc(100% - 0.1rem);
-  height: 2.8rem;
-  background-color: #c0c0c0;
-  border-top: 0.1rem solid #ffffff;
-  border-bottom: 0.1rem solid #505050;
-  border-left: 0.1rem solid #505050;
-}
-
-div.taskbar-button {
-  width: 2.3rem;
-  height: 2.3rem;
-  background-color: #c0c0c0;
-  border-right: 0.1rem solid #ffffff;
-  border-top: 0.1rem solid #ffffff;
-  border-bottom: 0.1rem solid #505050;
-  border-left: 0.1rem solid #505050;
-  margin: 0.2rem;
-  margin-bottom: -0.1rem;
-  margin-right: -0.1rem;
-  display: inline-block;
-  position: relative;
-}
-
-div.taskbar-button img {
-  width: 1.9rem;
-  height: 1.9rem;
-  position: absolute;
-  top: 0.2rem;
-  left: 0.2rem;
-  /* not draggable */
-  -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
-}
-
-div.taskbar-button:active {
-  border-right: 0.1rem solid #505050;
-  border-top: 0.1rem solid #505050;
-  border-bottom: 0.1rem solid #ffffff;
-  border-left: 0.1rem solid #ffffff;
-}
-
-div.windows {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* don't block clicks */
-  pointer-events: none;
-}
-
-div.window {
-  min-width: 20rem;
-  min-height: 10rem;
-  background-color: #c0c0c0;
-  border: 0.1rem solid #505050;
-  border-top: 0.1rem solid #ffffff;
-  border-right: 0.1rem solid #ffffff;
-  position: absolute;
-  overflow: hidden;
-  
-  /* do block clicks */
-  pointer-events: auto;
-}
-div.window .title {
-  background-color: #000082;
-  color: #ffffff;
-  padding: 0.25rem;
-  user-select: none;
-}
-div.window:not(.active) .title {
-  background-color: #505050;
-  color: #c0c0c0;
-}
-div.window .icons {
-  width: 100%;
-  height: 100%;
-  min-height: 6rem;
-  /* grid horizontal */
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 4rem);
-  grid-auto-rows: repeat(auto-fill, 7rem);
-  grid-gap: 1rem;
-  padding: 1rem;
-  margin-bottom: 1rem;  
-}
-div.window .icons .icon {
-  width: 4rem;
-  min-height: 5rem;
-  cursor: pointer;
-  text-align: center;
-  color: black;
-}
-div.window .icons .icon img {
-  width: 4rem;
-  height: 4rem;
-  /* not draggable */
-  -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
-}
-.title img {
-  width: 1rem;
-  height: 1rem;
-  margin: 0.125rem;
-  margin-bottom: -0.125rem;
-  /* not draggable */
-  -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
-}
-.title .close {
-  float: right;
-  width: 1.25rem;
-  height: 1.25rem;
-  border: 0.1rem solid #505050;
-  border-top: 0.1rem solid #ffffff;
-  border-right: 0.1rem solid #ffffff;
-  border-bottom: 0.1rem solid #505050;
-  border-left: 0.1rem solid #505050;
-  margin-left: 0.25rem;
-  cursor: pointer;
-}
-div.window .content {
-  padding: 0.25rem;
-}
-
-div.desktop .desktop-icon {
-  width: 6rem;
-  height: 6rem;
-  overflow: hidden;
-  cursor: pointer;
-  text-align: center;
   color: white;
-}
-.desktop-icon img {
-  width: 4rem;
-  height: 4rem;
-  margin-bottom: 0rem;
-}
-
-textarea {
-    width: 20rem;
-    height: 15rem;
-    resize: none;
-    border-top: none;
-    margin: -0.5rem;
-    margin-top: -0.25rem;
-    padding: 0.5rem;
-}
-
-/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Open Sans', sans-serif;
-    color: white;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #2d2d2d;
-    z-index: -50;
-    
-    overflow: hidden;
-    position: relative;
+  background-image: url("bg.png");
+  background-repeat: repeat;
+
+  animation: marquee 360s linear infinite;
 }
 
-div.intro {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
-
-    overflow: hidden;
-    top: 0;
-    left: 0;
-
-    background: #0d0d0d;
-    z-index: -999;
-}
-
-@keyframes introbg {
-    0% {
-        top: calc(-400rem + -100vh);
-    }
-    100% {
-        top: 0;
-    }
-}
-
-div.bgtransition {
-    transform: rotate(-45deg);
-    background-color: #2d2d2d;
-    width: 1000rem;
-    height: 300rem;
-    position: absolute;
-    z-index: 0;
-
-    top: -500rem;
-
-    animation-name: introbg;
-    animation-duration: 1s;
-    animation-delay: 4s;
-    animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
-    animation-fill-mode: both;
-}
-
-@keyframes introimg {
-    0% {
-        transform: translateX(calc(-50vw + -18rem)) rotate(-720deg);
-    }
-    45%, 55% {
-        transform: none;
-    }
-    100% {
-        transform: translateX(calc(50vw + 18rem)) rotate(720deg);
-    }
-}
-
-img#introimg {
-    width: 18rem;
-    height: 18rem;
-    animation-name: introimg;
-    animation-duration: 4s;
-    animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
-    transform: translateX(calc(50vw + 18rem));
-
-    z-index: 1;
-}
-
-
-@keyframes main {
-    0% {
-        transform: translateX(100vw);
-    }
-    100% {
-        transform: none;
-    }
-}
-
-div.main {
-    height: 100vh;
-    width: calc(100vw - 4rem);
-
-    overflow: scroll;
-
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    z-index: 3;
-    
-    background-color: transparent;
-
-    text-align: center;
-
-    padding: 2rem;
-
-    transform: none;
-
-    animation-name: main;
-    animation-duration: 1s;
-    animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
-    animation-delay: 4.5s;
-    animation-fill-mode: both;
-
-    opacity: 1;
-}
-
-h1 {
-    font-size: 3rem;
-}
-
-div.games {
-    padding-top: 4rem;
-    width: 58rem;
-    display: grid;
-    grid-template-columns: repeat(5, 10rem);
-    grid-template-rows: repeat(8, 10rem);
-    gap: 2rem;
-    margin: 0 auto;
-}
-
-div.game {
-    display: inline-block;
-    width: 10rem;
-    height: 10rem;
-    margin: 1rem;
-    border-radius: 8px;
-    background-color: #2d2d2d;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-}
-
-div.game.wide2 {
-    width: 22rem;
-}
-div.game.wide3 {
-    width: 34rem;
-}
-div.game.tall2 {
-    height: 22rem;
-}
-div.game.tall3 {
-    height: 34rem;
-}
-
-div.game img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    pointer-events: none;
-}
-
-div.game a {
-    background-color: #0000007f;
-    width: calc(100% - 2rem);
-    height: calc(100% - 2rem);
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: opacity 0.2s;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    z-index: 1;
-    padding: 1rem;
-}
-
-div.game:hover a {
-    opacity: 1;
-}
-
-.hidden {
-} */
-
-/* p.tandc {
-    font-size: 0.75rem;
-    font-weight: 100;
-    color: gray;
-    display: block;
-    margin-top: -7rem;
-    margin-bottom: 1rem;
-    cursor: pointer;
-    user-select: none;
-} */
-
-/*
-
-body {
-    background-color: black;
-  
-    height: 100vh;
-    width: 100vw;
-    z-index: -2;
-}
-.bg-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #237f80;
-  
-    height: 100vh;
-    width: 100vw;
-  
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index: -1;
-}
-
-body.dark .bg-img {
-    opacity: 30%;
-}
-
-body {
-    overflow-x: hidden;
-}
-
-.title-bar-controls button {
-    background-color: transparent;
-}
-
-body.dark .window {
-    background-color: #1c1b17;
-    color: white;
-}
-div.games {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 16rem);
-    grid-template-rows: repeat(auto-fit, 6rem);
-    gap: 1rem;
-    width: calc(100% - 2.4rem);
-    padding: 1rem 1rem 1rem 1rem;
-    overflow: visible;
-    position: relative;
-    margin-left: 0.2rem;
-    border-top: 1px solid #c6cdec;
-    background-color: white;
-    justify-content: space-evenly;
-}
-
-.game {
-    text-align: center;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    width: calc(100%);
-    position: relative;
-    user-select: none;
-}
-
-.game a {
-    text-decoration: none;
-    overflow: hidden;
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    z-index: 3;
-}
-.game img {
-    width: 5rem;
-    z-index: 0;
-    opacity: 1;
-    aspect-ratio: 1/1;
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
-    border-radius: 8px;
-    float: left;
-    margin-right: 1rem;
-}
-
-.game h2 {
-    color: black;
-    z-index: 3;
-    top: 1rem;
-    font-size: 1rem;
-    margin-top: 1rem;
-}
-
-.game h3 {
-    color: black;
-    z-index: 3;
-    top: 1rem;
-    font-size: 0.7rem;
-    margin-top: 0.5rem;
-}
-
-* {
-    color: white;
-    font-family: 'Open Sans', sans-serif;
-    margin: 0;
-    -ms-overflow-style: none; 
-    scrollbar-width: none; 
-}
-*::-webkit-scrollbar {
-    display: none;
-}
-p {
-    font-size: 1rem;
-    text-align: left;
-    padding-left: 0.5rem;
+@keyframes marquee {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 2176px 544px;
+  }
 }
 
 main {
-    position: absolute;
-    background-blend-mode: darken;
-    padding: 0;
-    width: 100vw;
-    height: calc(100vh - 4rem);
-    overflow-y: scroll;
-    text-align: center;
-    margin: 0;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    opacity: 1;
-    transform: translate(calc(calc(1 - var(--animtime)) * -50rem), calc(calc(1 - var(--animtime)) * 25rem)) scale(calc(var(--animtime) * 1));
-}
-canvas {
-    position: fixed;
-    z-index: -1;
-}
-div.toptext {
-    width: calc(65% - 2rem);
-    margin: 0 0 0 auto;
+  margin: 0 auto;
+  margin-top: 3rem;
+  width: min(90%, 50rem);
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1rem);
 }
 
-div.window {
-    width: calc(65% - 2rem);
-    margin: 0 1rem 0 auto;
+div.console {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(1rem);
+  border: 1px solid #e49ef7;
+  min-height: 24rem;
 }
-div.window *:not(.title-bar-text) {
-    color: black !important;
+
+div.folder {
+  color: #e49ef7;
+  user-select: none;
+  cursor: pointer;
 }
-@media screen and (max-width: 790px) {
-    div.window {
-        width: calc(100% - 2rem);
-        grid-template-columns: repeat(2, minmax(12rem,1fr));
-    }
-} 
-*/
+div.folder::before {
+  content: '> ';
+  width: 2rem;
+}
+div.folder.open::before {
+  content: 'v ';
+  width: 2.1rem;
+  padding-left: 0.1rem;
+  padding-right: 0.02rem;
+}
+div.folder:not(.open) + div.contents {
+  display: none;
+}
+div.folder + div.contents {
+  padding-left: 1rem;
+  border-left: 1px solid #e49ef74f;
+}
+div.contents span {
+  font-style: italic;
+}
