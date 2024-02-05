@@ -1,4 +1,4 @@
-let baseurl = "https://www.notmario.world/";
+let baseurl = "https://notmario.github.io/";
 
 let stuff = [
     {
