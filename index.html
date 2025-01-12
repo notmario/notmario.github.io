@@ -1,45 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>notmario.world</title>
-    <meta name="description" content="Hello! This is a website by not mario.">
-    <meta content="notmario.world" property="og:title" />
-    <meta content="A website by me." property="og:description" />
-    <meta content="https://notmario.world" property="og:url" />
-    <meta content="#9B1DF5" data-react-helmet="true" name="theme-color" />
-    <link rel="shortcut icon" href="favicon.png" type="image/png">
-    <link rel="stylesheet" href="index.css">
-    <style>
-      body { margin: 0; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>notmario</title>
+  <link rel="stylesheet" href="7.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <main>
-    <h1>notmario.world</h1>
-    <p>i make things. here are some of those things.</p>
-    <div class="console">
-      <div class="folder open" id="mainfolder">~</div>
-    </div>
-  </main>
-
-  <!-- <div class="desktop">
-
+  <div class="bg"></div>
+  <div class="win7">
+    <main class="window glass active">
+      <div class="title-bar">
+        <div class="title-bar-text">My Cool Website-final2-finished-draft</div>
+        <!-- <div class="title-bar-controls">
+        </div> -->
+      </div>
+      <div class="window-body has-space">
+        <section class="tabs">
+          <menu role="tablist" aria-label="Main Tabs">
+            <button role="tab" aria-controls="tab-home" aria-selected="true">Home</button>
+            <button role="tab" aria-controls="tab-projects">Projects</button>
+            <button role="tab" aria-controls="tab-misc" disabled aria-describedby="balloon-todo" class="hover-balloon">Misc. things</button>
+          </menu>
+          <article role="tabpanel" id="tab-home">
+            Hello! This is my website. It is currently unfinished, as you can probably see.
+            <img src="construction.gif" alt="construction" style="float: right; width: 192px;">
+            <br>
+            More website coming in the coming days.
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+          </article>
+          <article role="tabpanel" id="tab-projects" hidden>
+            Here are some of the things that I have made or worked on that are probably good enough to put on display. This is not a complete list of everything I have done, and may change in future.
+            <br>
+            <br>
+            <div class="projects-grid">
+              <div class="card">
+                <a href="https://not-mario-games.itch.io/notmarioware">
+                  <img src="./nmwitchpage.png" alt="poorly drawn television with the words not mario ware on it">
+                  notmarioware
+                </a> (2023-2024)
+                <p>A collection of 44 short "microgames", using Twemoji's emojis for a majority of the art. Contains local multiplayer and a daily challenge.</p>
+              </div>
+              <div class="card">
+                <a href="https://notmario.github.io/choos/">
+                  <img src="./postssg.png" alt="text with a header reading postssg">
+                  postssg
+                </a> (2024)
+                <p>A static site generator written in Rust. All text is placed in a &lt;pre&gt; tag as a stylistic choice.</p>
+              </div>
+              <div class="card">
+                <a href="https://notmario.github.io/More Fluff/">
+                  <img src="./morefluff.png" alt="text reading More Fluff">
+                  More Fluff
+                </a> (2024-)
+                <p>A mod for the video game Balatro. Currently adds 45 jokers, a new consumeable type, and some other items.</p>
+              </div>
+              <div class="card">
+                <a href="https://notmario.github.io/choos/">
+                  <img src="./choos.png" alt="chess pieces">
+                  Choos
+                </a> (2023)
+                <p>Chess but with different armies. Has online multiplayer.</p>
+              </div>
+              <div class="card">
+                <a href="https://chromewebstore.google.com/detail/arcade-classics/gokcmhknbfbkchaljcbjloaebnoblcnd">
+                  <img src="./ac.png" alt="video game characters and items with the words arcade classics on it">
+                  Arcade Classics
+                </a> (2020-2022)
+                <p>A collection of 9 arcade games in a Chrome Extension. Made as part of a team.</p>
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
+      <div class="status-bar">
+        <p class="status-bar-field">Press F1 for help</p>
+        <p class="status-bar-field">Using 7.css, from <a href="https://khang-nd.github.io/7.css/">https://khang-nd.github.io/7.css/</a></p>
+      </div>
+    </main>
   </div>
-  <div class="windows">
-    
-  </div>
-  <div class="taskbar">
-    <div class="taskbar-button">
-      <img src="./favicon.png" alt="notmario.net">
-    </div>
-  </div> -->
-  
+  <script>
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "F1") {
+        alert("No help here...")
+      }
+    })
+
+    // from 7.css website
+    function tabHandler(e, tabButtons) {
+      e.preventDefault();
+      const tabContainer = e.target.parentElement.parentElement;
+      const targetId = e.target.getAttribute("aria-controls");
+      tabButtons.forEach((_tabButton) =>
+        _tabButton.setAttribute("aria-selected", false)
+      );
+      e.target.setAttribute("aria-selected", true);
+      e.target.focus();
+      tabContainer
+        .querySelectorAll("[role=tabpanel]")
+        .forEach((tabPanel) => tabPanel.setAttribute("hidden", true));
+      tabContainer
+        .querySelector(`[role=tabpanel]#${targetId}`)
+        .removeAttribute("hidden");
+
+      location.hash = targetId.replace("tab-", "");
+      if (targetId == "tab-home") {location.hash = ""}
+    }
+    const mainTabList = document.querySelector("[aria-label='Main Tabs']");
+    const mainTabButtons = mainTabList.querySelectorAll("[role=tab]");
+    mainTabButtons.forEach((tabButton) =>
+      tabButton.addEventListener("mousedown", (evt) => {
+        tabHandler(evt, mainTabButtons)
+      }));
+      mainTabButtons.forEach((tabButton) =>
+      tabButton.addEventListener("focus", (evt) => {
+        tabHandler(evt, mainTabButtons)
+      }));
+
+    let btn = document.querySelector(`[aria-controls="tab-${location.hash.replace("#", "")}"]`);
+    if (btn) {
+      let e = Event;
+      e.target = btn;
+      e.preventDefault = ()=>{};
+      tabHandler(e, mainTabButtons);
+    }
+  </script>
 </body>
-<!-- <script src="js/three.js"></script> -->
-<!--<script src="./threestuff.js" defer></script>-->
-<script src="./index.js" defer></script>
 </html>
