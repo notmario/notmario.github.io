@@ -1,34 +1,109 @@
-.bg {
-  width: 100vw;
-  height: 100vh;
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  position: fixed;
-  background-attachment: local;
+  font-family: "Comic Neue", cursive;
+  color: #220000;
+  image-rendering: pixelated;
+}
+
+@keyframes background-move {
+  from { background-position: 0px 0px; }
+  to { background-position: 64px 112px; }
+}
+
+html {
+  background-image: url('bg.png');
+  font-size: 18px;
+
+  animation: background-move 20s infinite linear;
+}
+
+section {
+  position: relative;
+  
+  width: clamp(20rem, 60%, 40rem);
+  margin: 0 auto;
+  margin-top: 4rem;
+  padding-left: 1rem;
+  background-color: #fcdee6;
+  /* padding: 1rem; */
+  /* padding-top: 6rem; */
+  border-radius: 4px;
+
+  min-height: 40rem;
+
+  overflow: hidden;
+}
+
+header {
+  /* position: absolute; */
+
+  background-color: #fcaeb6;
+  padding: 1.5rem;
+  width: 100%;
+  height: 5rem;
   top: 0;
   left: 0;
-  user-select: none;
-  z-index: -999;
-  background-image: url("bg.png");
-  background-repeat: repeat;
+
+  border-bottom: 2px solid #220000;
 }
+
 main {
-  margin: 2rem auto;
-  width: clamp(12rem, 80%, 60rem);
+  padding: 1rem;
 }
-.projects-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
+
+footer {
+  position: absolute;
+  bottom: 0;
+  padding: 1rem;
+  background-color: #fcaeb6;
+  padding: 1rem;
+  width: 100%;
+  border-top: 2px solid #220000;
 }
-.card {
-  border: 1px solid rgba(0.0, 0.0, 0.0, 0.3);
-  border-radius: 6px;
-  padding: 0.5rem;
+
+h1, h2 {
+  font-size: 2rem;
+  text-align: center;
+
+  user-select: none;
 }
-.card img {
-  width: calc(100% - 2rem);
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  padding-left: 1rem;
+  
+section .left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 1rem;
+  background: #660303;
+  border-right: 2px solid #220000;
 }
+
+section .triangle {
+  content: '';
+  position: absolute;
+  top: calc(5rem - 32px - 2px);
+  left: 32px;
+  
+  background-image: url("trianglewalk.png");
+  background-size: cover;
+  width: 32px;
+  height: 32px;
+
+  cursor: pointer;
+}
+
+
+/* main:before { */
+  /* content: '‌'; */
+  /* position: absolute; */
+  /* top: 0; */
+  /* left: 0; */
+  /* width: 100%; */
+  /* background: #FFAAAA; */
+  /* background: repeating-linear-gradient(120deg, #880000, #880000 4%, #ff7777 4%, #ff7777 8%); */
+  /* border: 1px solid #880000; */
+/* } */
