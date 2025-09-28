@@ -18,7 +18,11 @@ triangles.forEach((tri) => {
   tri.addEventListener("click", (event) => {
     tri.animate(triangleSpin, triangleSpinTiming)
 
-    if (++spin_count >= 10) {
+    setTimeout(() => {
+      spin_count--;
+    }, 1000)
+
+    if (++spin_count >= 4) {
       tri.style.backgroundImage = "url(\"img/triangledizzy.png\")"
     }
   })
