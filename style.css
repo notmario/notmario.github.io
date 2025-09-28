@@ -24,18 +24,24 @@ html {
 section {
   position: relative;
   
-  width: clamp(20rem, 60%, 40rem);
+  width: clamp(25rem, calc(100% - 8rem), 50rem);
   margin: 0 auto;
   margin-top: 4rem;
+  margin-bottom: 4rem;
   padding-left: 1rem;
   background-color: #fcdee6;
   /* padding: 1rem; */
   /* padding-top: 6rem; */
   border-radius: 4px;
 
-  min-height: 40rem;
-
   overflow: hidden;
+}
+
+div.flex {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 36rem;
 }
 
 header {
@@ -51,12 +57,44 @@ header {
   border-bottom: 2px solid #220000;
 }
 
+aside {
+  background-color: #991010;
+  width: 12rem;
+  min-height: 100%;
+  float: left;
+  border-right: 2px solid #220000;
+  padding: 0.5rem;
+  flex-shrink: 0;
+}
+
+aside div {
+  width: 100%;
+  border: 2px solid #220000;
+  border-radius: 4px;
+}
+aside div span.sidebartitle {
+  background-color: #660303;
+  color: #fcdee6;
+  width: 100%;
+  text-align: center;
+  display: block;
+  border-bottom: 2px solid #220000;
+}
+aside div span:not(.sidebartitle) {
+  background-color: #fcdee6;
+  color: #220000;
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+
 main {
   padding: 1rem;
+  width: 100%;
 }
 
 footer {
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   padding: 1rem;
   background-color: #fcaeb6;
@@ -72,7 +110,7 @@ h1, h2 {
   user-select: none;
 }
   
-section .left {
+section > .left {
   position: absolute;
   top: 0;
   left: 0;
@@ -96,14 +134,25 @@ section .triangle {
   cursor: pointer;
 }
 
+h3 {
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #220000;
+  clear: both;
+}
 
-/* main:before { */
-  /* content: '‌'; */
-  /* position: absolute; */
-  /* top: 0; */
-  /* left: 0; */
-  /* width: 100%; */
-  /* background: #FFAAAA; */
-  /* background: repeating-linear-gradient(120deg, #880000, #880000 4%, #ff7777 4%, #ff7777 8%); */
-  /* border: 1px solid #880000; */
-/* } */
+img.left {
+  max-width: 35%;
+  float: left;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+  border: 2px solid #220000;
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid #220000;
+  clear: both;
+}
