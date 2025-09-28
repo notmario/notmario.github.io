@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Comic Neue", cursive;
+  font-family: "Funnel Sans", sans-serif;
   color: #220000;
   image-rendering: pixelated;
 }
@@ -15,7 +15,7 @@
 }
 
 html {
-  background-image: url('bg.png');
+  background-image: url('img/bg.png');
   font-size: 18px;
 
   animation: background-move 20s infinite linear;
@@ -88,7 +88,7 @@ section .triangle {
   top: calc(5rem - 32px - 2px);
   left: 32px;
   
-  background-image: url("trianglewalk.png");
+  background-image: url("img/trianglewalk.png");
   background-size: cover;
   width: 32px;
   height: 32px;

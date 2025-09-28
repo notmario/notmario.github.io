@@ -19,7 +19,7 @@ triangles.forEach((tri) => {
     tri.animate(triangleSpin, triangleSpinTiming)
 
     if (++spin_count >= 10) {
-      tri.style.backgroundImage = "url(triangledizzy.png)"
+      tri.style.backgroundImage = "url(\"img/triangledizzy.png\")"
     }
   })
 })
