@@ -36,6 +36,7 @@ section {
 }
 
 main {
+    min-height: calc(100svh - 7rem - 3rem);
     padding: 1rem;
 }
 
@@ -75,17 +76,16 @@ header h1 {
     color: white;
     display: inline-block;
     font-size: 4rem;
-    animation: title-move 100s steps(1) infinite;
+    animation: title-move 50s steps(1) infinite;
     animation-delay: calc(sibling-index() * -7s);
 }
 .header-gap { padding: 0.5rem; }
 
 footer {
-    position: absolute;
     display: block;
-    width: calc(clamp(20rem, calc(100vw - 2rem), 50rem) - 8px);
     padding: 1rem;
-    bottom: 0rem;
+    height: 3rem;
+    width: 100%;
     background-color: #3e0819;
     color: #ffe3ec;
 }
